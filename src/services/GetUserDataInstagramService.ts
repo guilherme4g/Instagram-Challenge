@@ -27,7 +27,7 @@ export default async (idUser:string, userToken: string) => {
   console.log(user);
 
   return {
-    user: user.data,
+    profile: user.data,
     media: media.data
   }
 };
