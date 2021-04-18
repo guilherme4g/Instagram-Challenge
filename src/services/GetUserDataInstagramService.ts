@@ -5,8 +5,8 @@ const instagramBasicApiUrl = axios.create({
   timeout: 5000
 });
 
-export default async (idUser:string, userToken: string) => {
-  const user = await instagramBasicApiUrl.get(`/${idUser}`, 
+export default async (userToken: string) => {
+  const user = await instagramBasicApiUrl.get(`/me`, 
     {
       params: {
         fields: "id,account_type,media_count,username",
@@ -23,8 +23,6 @@ export default async (idUser:string, userToken: string) => {
     },
     timeout: 5000
   }).catch(res => { throw Error(res.response.data) });
-
-  console.log(user);
 
   return {
     profile: user.data,
