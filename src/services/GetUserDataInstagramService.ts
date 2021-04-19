@@ -13,7 +13,7 @@ export default async (userToken: string) => {
         access_token: userToken
       },
       timeout: 5000
-  }).catch(res => { throw Error(res.response.data) });
+  }).catch(res => {  throw Error("error connecting instagram API") });
 
   const media = await instagramBasicApiUrl.get(`/me/media`, 
   {
@@ -22,10 +22,10 @@ export default async (userToken: string) => {
       access_token: userToken
     },
     timeout: 5000
-  }).catch(res => { throw Error(res.response.data) });
+  }).catch(res => { throw Error("error connecting instagram API") });
 
   return {
     profile: user.data,
-    media: media.data
+    media: media.data.data
   }
 };
